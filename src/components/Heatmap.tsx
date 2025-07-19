@@ -1,4 +1,4 @@
-import "./Heatmap.css";
+import "./heatmap.css";
 
 import { Chart, registerables } from "chart.js";
 import React, { useState } from "react";
