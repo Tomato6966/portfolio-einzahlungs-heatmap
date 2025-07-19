@@ -51,8 +51,8 @@ const Heatmap: React.FC = () => {
                 <input type="file" accept=".csv" onChange={handleFileUpload} multiple />
             </div>
 
-            {isLoading && <p style={{textAlign: 'center', color: '#007bff'}}>Dateien werden verarbeitet...</p>}
-            {error && <p style={{textAlign: 'center', color: '#ff4d4d'}}>Fehler: {error}</p>}
+            {isLoading && <p style={{ textAlign: 'center', color: '#007bff' }}>Dateien werden verarbeitet...</p>}
+            {error && <p style={{ textAlign: 'center', color: '#ff4d4d' }}>Fehler: {error}</p>}
 
             {allBeträge.length > 0 && (
                 <>
