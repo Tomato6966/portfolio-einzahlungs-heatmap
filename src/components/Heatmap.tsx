@@ -4,6 +4,7 @@ import { Chart, registerables } from "chart.js";
 import React, { useState } from "react";
 import { Line } from "react-chartjs-2";
 
+import { useLocale } from "../contexts/LocaleContext";
 import { useChartData } from "../hooks/useChartData";
 import { useTransactionData } from "../hooks/useTransactionData";
 import { formatCurrency } from "../utils/Heatmap";
@@ -17,6 +18,8 @@ const Heatmap: React.FC = () => {
     const [collapsedYears, setCollapsedYears] = useState<Set<string>>(new Set());
 
     const { chartData, chartOptions, sortedYears } = useChartData(daten, viewMode);
+
+    const { locale, setLocale, t } = useLocale();
 
     const allBeträge = React.useMemo(() => Object.values(daten).flatMap(monats => Object.values(monats).map(summen => summen.betrag)), [daten]);
     const totalAverage = React.useMemo(() => allBeträge.length > 0 ? allBeträge.reduce((a, b) => a + b, 0) / allBeträge.length : 0, [allBeträge]);
@@ -43,48 +46,79 @@ const Heatmap: React.FC = () => {
         <div className="container">
             <div className="title">
                 <img src={`${import.meta.env.BASE_URL}portfolio-performance.png`} alt="Portfolio Performance Logo" />
-                <h1>Portfolio Einzahlungs-Heatmap</h1>
+                <h1>{t("appTitle")}</h1>
             </div>
+
+            <div className="language-selector">
+                <button
+                    onClick={() => setLocale('de')}
+                    className={locale === 'de' ? 'active-btn' : ''}
+                >
+                    🇩🇪
+                </button>
+                <button
+                    onClick={() => setLocale('en')}
+                    className={locale === 'en' ? 'active-btn' : ''}
+                >
+                    🇬🇧 / 🇺🇸
+                </button>
+            </div>
+            <div className="credits">
+                Made with ♥️ <a
+                    href="https://github.com/Tomato6966/portfolio-einzahlungs-heatmap/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="github-link"
+                >
+                    ({t("githubRepoLinkText")})
+                </a>
+            </div>
+
+
             <div className="how-to-info">
-                <i><b>Wie bekomme ich die CSV?</b> <br />Portfolio-Performance → Datei → Exportieren → CSV-Dateien → Depotumsätze/Kontoumsätze</i>
+                <i dangerouslySetInnerHTML={{ __html: `<b>${t("howToGetCsv")}</b>` }}></i>
+                <i>{t("clientSideInfo")}</i>
 
-                <input type="file" accept=".csv" onChange={handleFileUpload} multiple />
+                <label htmlFor="file-upload" className="custom-file-upload">
+                    {t("chooseFiles")}
+                </label>
+                <input id="file-upload" type="file" accept=".csv" onChange={handleFileUpload} multiple />
             </div>
 
-            {isLoading && <p style={{ textAlign: 'center', color: '#007bff' }}>Dateien werden verarbeitet...</p>}
-            {error && <p style={{ textAlign: 'center', color: '#ff4d4d' }}>Fehler: {error}</p>}
+            {isLoading && <p style={{ textAlign: 'center', color: '#007bff' }}>{t("processingFiles")}</p>}
+            {error && <p style={{ textAlign: 'center', color: '#ff4d4d' }}>{t("errorOccurred")} {error}</p>}
 
             {allBeträge.length > 0 && (
                 <>
                     <h2 style={{ textAlign: "center", marginTop: "1rem" }}>
-                        Gesamt-Ø: {formatCurrency(totalAverage)}
+                        {t("totalAverage")}: {formatCurrency(totalAverage)}
                     </h2>
                     <div className="button-group">
                         <button
                             onClick={() => setViewMode("perYear")}
                             className={viewMode === "perYear" ? "active-btn" : ""}
                         >
-                            Pro Jahr
+                            {t("perYear")}
                         </button>
                         <button
                             onClick={() => setViewMode("perMonth")}
                             className={viewMode === "perMonth" ? "active-btn" : ""}
                         >
-                            Pro Monat
+                            {t("perMonth")}
                         </button>
                         <button
                             onClick={() => setViewMode("allMonths")}
                             className={viewMode === "allMonths" ? "active-btn" : ""}
                         >
-                            Alle Monate
+                            {t("allMonths")}
                         </button>
                     </div>
                     <div className="chart-wrapper">
                         <Line data={chartData} options={chartOptions} />
                     </div>
                     <div className="button-group" style={{ marginTop: '10px' }}>
-                        <button onClick={() => toggleAllYears(true)}>Alle Jahre einklappen</button>
-                        <button onClick={() => toggleAllYears(false)}>Alle Jahre ausklappen</button>
+                        <button onClick={() => toggleAllYears(true)}>{t("collapseAllYears")}</button>
+                        <button onClick={() => toggleAllYears(false)}>{t("expandAllYears")}</button>
                     </div>
                 </>
             )}
@@ -93,7 +127,7 @@ const Heatmap: React.FC = () => {
                 const yearData = daten[parseInt(jahr)] || {};
 
                 const yearTotalBetrag = Object.values(yearData).reduce((sum, data) => sum + data.betrag, 0);
-                const monthsInYearData = Object.keys(yearData).length; // Actual months with data
+                const monthsInYearData = Object.keys(yearData).length;
                 const yearAverageBetrag = monthsInYearData > 0 ? yearTotalBetrag / monthsInYearData : 0;
 
                 const isCollapsed = collapsedYears.has(jahr);

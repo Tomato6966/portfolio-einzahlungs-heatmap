@@ -1,12 +1,15 @@
 import "./index.css";
 
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-import Heatmap from "./components/Heatmap";
+import Heatmap from "./components/Heatmap.tsx";
+import { LocaleProvider } from "./contexts/LocaleContext.tsx";
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <Heatmap />
-  </StrictMode>,
-)
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <LocaleProvider>
+      <Heatmap />
+    </LocaleProvider>
+  </React.StrictMode>,
+);

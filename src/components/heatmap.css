@@ -243,3 +243,24 @@ button.active-btn {
         font-size: 1em;
     }
 }
+
+
+.language-selector {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+.language-selector > button {
+    min-width: 50px;
+}
+
+.credits {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 8px;
+}
