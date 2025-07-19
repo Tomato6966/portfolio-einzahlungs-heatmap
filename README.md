@@ -6,6 +6,8 @@
 
 The **Portfolio Einzahlungs-Heatmap** is a powerful and intuitive React application designed to help you visualize and analyze your monthly portfolio deposits. By simply uploading CSV export files from your portfolio management software (like Portfolio Performance), you can generate a detailed heatmap and interactive line charts that reveal your deposit trends over time. Understand your average deposits per year, month, and observe chronological flows at a glance.
 
+**Try it yourself:** https://tomato6966.github.io/portfolio-einzahlungs-heatmap/
+
 ## ✨ Features
 
 * **Multi-CSV Upload**: Easily upload one or more CSV files containing your transaction data.
@@ -58,7 +60,7 @@ To get this project up and running on your local machine, follow these steps:
 
     **💡 Tip for Portfolio Performance Users**:
     You can export the necessary CSVs by navigating to:
-    `File` → `Export` → `CSV Files` → Select `Account Transactions` and/or `Securities Account Transactions`.
+    `File` → `Export` → `CSV Files` →  `Securities/Account Transactions`.
 
 3.  **Explore the Visualizations**:
     * Use the **"Pro Jahr"**, **"Pro Monat"**, and **"Alle Monate"** buttons to switch between different chart views.
@@ -73,8 +75,7 @@ This project uses [Oxlint](https://oxlint.rs/) for fast and efficient code linti
 
 <img width="1042" height="1293" alt="image" src="https://github.com/user-attachments/assets/dbe4e717-986e-4763-bcea-6786b7d1a0fa" />
 
+## Info About Portfolio Performance
 
-To run the linter with React and Network-specific checks:
-
-```bash
-npm run lint
+- Website: https://www.portfolio-performance.info/
+- Repository: https://github.com/portfolio-performance/portfolio

@@ -42,7 +42,7 @@ const Heatmap: React.FC = () => {
     return (
         <div className="container">
             <div className="title">
-                <img src="/portfolio-performance.png" />
+                <img src={`${import.meta.env.BASE_URL}portfolio-performance.png`} alt="Portfolio Performance Logo" />
                 <h1>Portfolio Einzahlungs-Heatmap</h1>
             </div>
             <div className="how-to-info">
