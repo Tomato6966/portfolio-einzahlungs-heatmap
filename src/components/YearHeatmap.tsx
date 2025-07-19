@@ -1,9 +1,9 @@
 import React from "react";
 
+import { useLocale } from "../contexts/LocaleContext";
 import { formatCurrency, getColor } from "../utils/Heatmap";
 
 import type { MonatsSummen } from '../Types/Heatmap';
-
 interface YearHeatmapProps {
     jahr: string;
     yearData: { [month: number]: MonatsSummen };
@@ -19,12 +19,13 @@ const YearHeatmap: React.FC<YearHeatmapProps> = ({
     toggleCollapse,
     yearAverageBetrag,
 }) => {
+    const { locale, t } = useLocale();
     const monthDetails = React.useMemo(() => Array.from({ length: 12 }, (_, monat) => yearData[monat] ?? { betrag: 0, steuer: 0, gebühren: 0 }), [yearData]);
 
     return (
         <div className="jahr">
             <h2 onClick={() => toggleCollapse(jahr)} style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                {jahr} Ø {formatCurrency(yearAverageBetrag)}
+                {jahr} {t("avgShort")} {formatCurrency(yearAverageBetrag)} {/* NEU: "Ø" übersetzen */}
                 <span>{isCollapsed ? '►' : '▼'}</span>
             </h2>
             {!isCollapsed && (
@@ -36,16 +37,17 @@ const YearHeatmap: React.FC<YearHeatmapProps> = ({
                             style={{ backgroundColor: getColor(data.betrag) }}
                         >
                             <span>
-                                {new Date(2000, monat).toLocaleString("de-AT", {
+                                {/* NEU: locale-Variable für die Monatsnamen verwenden */}
+                                {new Date(2000, monat).toLocaleString(locale, {
                                     month: "short",
                                 })}
                             </span>
                             <strong>{data.betrag ? formatCurrency(data.betrag) : "–"}</strong>
                             {data.gebühren > 0 && (
-                                <small>Gebühren: {formatCurrency(data.gebühren)}</small>
+                                <small>{t("fees")}: {formatCurrency(data.gebühren)}</small>
                             )}
                             {data.steuer > 0 && (
-                                <small>Steuern: {formatCurrency(data.steuer)}</small>
+                                <small>{t("taxes")}: {formatCurrency(data.steuer)}</small>
                             )}
                         </div>
                     ))}
