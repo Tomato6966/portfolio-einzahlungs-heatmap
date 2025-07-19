@@ -69,6 +69,11 @@ To get this project up and running on your local machine, follow these steps:
 
 This project uses [Oxlint](https://oxlint.rs/) for fast and efficient code linting.
 
+## Preview:
+
+<img width="1042" height="1293" alt="image" src="https://github.com/user-attachments/assets/dbe4e717-986e-4763-bcea-6786b7d1a0fa" />
+
+
 To run the linter with React and Network-specific checks:
 
 ```bash
