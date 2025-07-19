@@ -40,7 +40,7 @@ export const translations: Translations = {
         de: "Pro Jahr",
     },
     "perMonth": {
-        en: "Per Monat",
+        en: "Per Month",
         de: "Pro Monat",
     },
     "allMonths": {
