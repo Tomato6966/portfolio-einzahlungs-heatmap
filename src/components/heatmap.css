@@ -1,0 +1,242 @@
+body {
+    height: 100dvh;
+    color: #e0e0e0;
+    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+.container .title {
+    display: flex;
+    width: 100%;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .title > img {
+    width: 32px;
+    height: 32px;
+}
+
+h1 {
+    text-align: center;
+    color: #eeeeee #167a1a;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.how-to-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.how-to-info > i {
+    width: 100%;
+    padding: 4px;
+    text-align: center;
+    color: #bbbbbb;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+input[type="file"] {
+    padding: 12px 15px;
+    border: 1px solid #4a4a4a;
+    border-radius: 8px;
+    background-color: #333333;
+    color: #eeeeee;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+input[type="file"]:hover {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+    background: #0056b3;
+}
+
+
+h2 {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #dddddd;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+.button-group {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 22px;
+    border: 1px solid #007bff;
+    background-color: transparent;
+    color: #007bff;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+button:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+}
+
+button.active-btn {
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+    border-color: #007bff;
+}
+
+.chart-wrapper {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #2c2c2c;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.jahr {
+    margin-top: 40px;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    background-color: #2c2c2c;
+}
+
+.jahr h2 {
+    background-color: #333333;
+    padding: 15px 25px;
+    margin: 0;
+    border-bottom: 1px solid #4a4a4a;
+    color: #eeeeee;
+    text-align: left;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.monate {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    padding: 20px;
+    background-color: #2c2c2c;
+}
+
+.zelle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 12px 8px;
+    min-height: 100px;
+    border: 1px solid #4a4a4a;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    background-color: #3a3a3a;
+    position: relative;
+}
+
+.zelle span {
+    font-size: 0.85em;
+    color: #1b1b1b;
+    margin-bottom: 4px;
+    font-weight: normal;
+}
+
+.zelle strong {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #1b1b1b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+}
+
+.zelle small {
+    font-size: 0.7em;
+    color: #1b1b1b;
+    line-height: 1.2;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.zelle:hover {
+    background-color: #4a4a4a;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    transform: translateY(-3px);
+    cursor: default;
+    border-color: #007bff;
+}
+
+@media (max-width: 768px) {
+    .monate {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .monate {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .zelle {
+        padding: 10px 5px;
+        min-height: 80px;
+    }
+    .zelle strong {
+        font-size: 1em;
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "portfolio-heatmap",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint --promise-plugin --react-plugin --import-plugin --react-perf-plugin . --ignore-pattern=*node_modules*",
+    "lint:fix": "npm run lint -- --fix",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@types/papaparse": "^5.3.16",
+    "chart.js": "^4.5.0",
+    "papaparse": "^5.5.3",
+    "react": "^19.1.0",
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react-swc": "^3.10.2",
+    "oxlint": "^1.7.0",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.4"
+  }
+}
